@@ -10,13 +10,17 @@ set backspace=indent,eol,start
 " Set the path {{{
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html#'path'
 " See: http://vim.wikia.com/wiki/Open_file_under_cursor
-set path+=.,~/projects/Eclecticiq,,
+set path+=.,~/projects/Eclecticiq/platform-ui,,
 " }}}
 
 " File encoding TODO {{{
 " unsure if I need those...
 " See: http://stackoverflow.com/questions/9310274/how-can-i-use-vim-to-convert-my-file-to-utf8
-set bomb
+" Important: this line breaks YouCompleteMe (more specifically,
+"   the .tern-project file: https://github.com/Valloric/YouCompleteMe/issues/2432)
+" set bomb
+" TODO are you sure that this is not the problem for the problems you are
+"   having with the | char?
 set encoding=utf-8
 set fileencoding=utf-8
 " }}}
@@ -215,7 +219,7 @@ nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 " }}}
 
-" Mappings for F keys {{{
+" Mappings for F keys TODO {{{
 " function to toggle quickfix window
 " See: http://vim.1045645.n5.nabble.com/detecting-whether-the-quickfix-window-is-open-td1155292.html
 function! s:qf_toggle()
@@ -232,7 +236,10 @@ endfunction
 command! QFtoggle call s:qf_toggle()
 
 map <F1> :QFtoggle<CR>
-map <F2> :NERDTreeTabsToggle<CR>
+" TODO I had to write <bar> instead of just | . Found it in the following:
+" http://stackoverflow.com/questions/3249275/vim-multiple-commands-on-same-line
+" TODO not sure :NERDTreeTabsFind is having an effect :/
+map <F2> :NERDTreeTabsToggle<CR><bar>:NERDTreeTabsFind<CR>
 " }}}
 
 " Editor Plugins TODO
@@ -270,6 +277,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:gitgutter_sign_modified='~'
+let g:ycm_server_log_level = 'debug'
 " }}}
 
 " Bundle plugins {{{
@@ -307,6 +315,7 @@ Bundle 'mileszs/ack.vim'
 
 " autocomplete
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'ternjs/tern_for_vim'
 
 " allow to use * with selected text in visual mode
 Bundle 'thinca/vim-visualstar'

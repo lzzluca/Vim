@@ -263,12 +263,6 @@ augroup open_nerdtreetabs
     \ Startify   |
     \ endif
 augroup END
-" TODO explore NERDTree configuration further
-" See: https://github.com/jistr/vim-nerdtree-tabs#configuration
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:nerdtree_tabs_smart_startup_focus=2
-" TODO doesn't seem to work as expected
-let g:nerdtree_tabs_autofind=1
 let g:airline#extensions#hunks#enabled=0
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -277,6 +271,14 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:gitgutter_sign_modified='~'
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_smart_startup_focus=2
+" TODO doesn't seem to work as expected
+let g:nerdtree_tabs_autofind=1
+" NERDTree hightlight
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 let g:ycm_server_log_level = 'debug'
 " }}}
 
@@ -303,6 +305,8 @@ Bundle 'mhinz/vim-startify'
 Bundle 'scrooloose/nerdtree'
 " makes NerdTree work with tabs
 Bundle 'jistr/vim-nerdtree-tabs'
+" NERDTree highlight + icon (by vim-devicons)
+Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " fancy bottom bar
 Bundle 'bling/vim-airline'
@@ -328,6 +332,11 @@ Bundle 'tpope/vim-fugitive'
 
 " Ctrlp for tabs!
 Bundle 'DavidEGx/ctrlp-smarttabs'
+
+" vim icons, here used for NERDTree
+" Important: it needs to load after some plugins, I load it last for
+" convenience
+"Bundle 'https://github.com/ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on

@@ -164,6 +164,7 @@ set smartcase
 " clean the last search by pressing <Enter>
 " See: http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
 nnoremap <CR> :noh<CR><CR>
+:imap jj <Esc>
 " }}}
 
 " Editor mappings
@@ -318,8 +319,8 @@ Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 
 " autocomplete
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'ternjs/tern_for_vim'
+" Bundle 'Valloric/YouCompleteMe'
+" Bundle 'ternjs/tern_for_vim'
 
 " allow to use * with selected text in visual mode
 Bundle 'thinca/vim-visualstar'
